@@ -183,6 +183,11 @@ class SharedPreferences {
     _preferenceCache.addAll(preferences);
   }
 
+  Future<String> getStringFromDisc(String key) async {
+    final prefs = await SharedPreferences._getSharedPreferencesMap();
+    return prefs[key];
+  }
+
   static Future<Map<String, Object>> _getSharedPreferencesMap() async {
     final Map<String, Object> fromSystem = await _store.getAll();
     assert(fromSystem != null);
